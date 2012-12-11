@@ -114,7 +114,7 @@ module OpenURI
       protected
         def filename_from_url(url)
           uri = URI.parse(url) # TODO: rescue here?
-          [ @cache_path, uri.host, Digest::SHA1.hexdigest(url) ].join('/')
+          [ @cache_path, uri.host, uri.query.split('=').last+'.json' ].join('/')
         end
 
         def mkpath(path)
